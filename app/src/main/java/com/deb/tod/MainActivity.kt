@@ -2,14 +2,22 @@ package com.deb.tod
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.deb.tod.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    var mainActivitybinding : ActivityMainBinding? = null
+    var activityMainbinding : ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainActivitybinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mainActivitybinding?.root)
-        mainActivitybinding?.btnCreateGroup
+        activityMainbinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(activityMainbinding?.root)
+
+        activityMainbinding?.newTaskButton?.setOnClickListener {
+            Toast.makeText(this, "Teste botão de tarefas", Toast.LENGTH_SHORT).show()
+            val taskBottomSheet = NewTaskBottomSheet().show(supportFragmentManager, "NewTaskBottomSheet")
+
+        }
+
+
     }
 }
