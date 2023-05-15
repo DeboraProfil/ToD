@@ -14,7 +14,10 @@ class MainActivity : AppCompatActivity() {
 
         activityMainbinding?.newTaskButton?.setOnClickListener {
             Toast.makeText(this, "Teste botão de tarefas", Toast.LENGTH_SHORT).show()
-            val taskBottomSheet = NewTaskBottomSheet().show(supportFragmentManager, "NewTaskBottomSheet")
+             NewTaskBottomSheet{
+
+             }
+            .show(supportFragmentManager, "NewTaskBottomSheet")
 
         }
 
