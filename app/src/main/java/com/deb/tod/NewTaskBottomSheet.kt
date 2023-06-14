@@ -30,6 +30,8 @@ class NewTaskBottomSheet(val newTask: (String) -> Unit) :BottomSheetDialogFragme
             val task = newTaskLayoutBinding?.taskText?.text
             task?.let {
                 Toast.makeText(requireContext(), "New task - > ${it.toString()}",  Toast.LENGTH_SHORT).show()
+                newTask(it.toString())
+                dismiss()
             }
         }
 
