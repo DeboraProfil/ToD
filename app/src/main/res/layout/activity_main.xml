@@ -27,8 +27,8 @@
         app:strokeColor="@color/material_blue500"
         app:strokeWidth="1dp"
         app:elevation="0dp"
-        app:backgroundTint="@color/transparent"
-        android:textColor="?android:textColorPrimary"
+        app:backgroundTint="@color/material_blue500_50_alpha"
+        android:textColor="@color/white"
         app:cornerRadius="5dp"
         android:padding="16dp"
         android:layout_width="match_parent"
@@ -36,6 +36,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTasks"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        tools:listitem="@layout/task_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

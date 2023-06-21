@@ -23,18 +23,31 @@ class MainActivity : AppCompatActivity() {
             NewTaskBottomSheet {
                 Toast.makeText(this, "tarefa adicionada - > $it", Toast.LENGTH_SHORT).show()
                 tasks.add(it)
-                activityMainbinding?.recyclerViewTasks?.adapter = TaskAdapter(tasks)
+                updateTaskList(tasks)
 
 
-            }
-                .show(supportFragmentManager, "NewTaskBottomSheet")
+            }.show(supportFragmentManager, "NewTaskBottomSheet")
 
         }
 
-        activityMainbinding?.recyclerViewTasks?.adapter = TaskAdapter(tasks)
+        activityMainbinding?.recyclerViewTasks?.adapter = TaskAdapter(tasks){
+            tasks.remove(it)
+            updateTaskList(tasks)
+
+        }
+
+
         activityMainbinding?.recyclerViewTasks?.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
 
+    }
+
+    private fun  updateTaskList(newTasks: ArrayList <String>){
+        tasks = newTasks
+        activityMainbinding?.recyclerViewTasks?.adapter = TaskAdapter(tasks) { task ->
+            tasks.remove(task)
+            updateTaskList(tasks)
+        }
     }
 }
